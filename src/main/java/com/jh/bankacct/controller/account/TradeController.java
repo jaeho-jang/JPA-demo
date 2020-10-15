@@ -1,6 +1,6 @@
 package com.jh.bankacct.controller.account;
 
-import com.jh.bankacct.repository.entity.TradeTransferSum;
+import com.jh.bankacct.repository.dto.TradeTransferSum;
 import com.jh.bankacct.service.TradeService;
 
 import org.springframework.http.ResponseEntity;
@@ -21,7 +21,7 @@ public class TradeController {
     }
 
     @GetMapping(value = "/list")
-    public ResponseEntity<?> getTradeList() {
+    public ResponseEntity<? extends TradeTransferSum> getTradeList() {
         TradeTransferSum trades = tradeService.getTradeList();
         return ResponseEntity.ok(trades);
     }

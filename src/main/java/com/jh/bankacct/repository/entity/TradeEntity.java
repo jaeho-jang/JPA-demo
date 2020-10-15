@@ -1,6 +1,6 @@
 package com.jh.bankacct.repository.entity;
 
-import java.time.LocalDateTime;
+import java.sql.Blob;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,26 +8,17 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
-import com.fasterxml.jackson.annotation.JsonFormat.Shape;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 @Entity
 @Table(name = "t_trade")
-@NoArgsConstructor
-@AllArgsConstructor
+@NoArgsConstructor @AllArgsConstructor
 @Getter
 @Builder
-@ToString
-@JsonAutoDetect(fieldVisibility = Visibility.ANY)
-public class Trade {
+public class TradeEntity extends BaseTimeEntity {
 
     @Id
     // @GeneratedValue
@@ -48,7 +39,7 @@ public class Trade {
 
     @Lob
     @Column(name = "trade_contents", columnDefinition = "blob", nullable = false)
-    private byte[] tradeContents;
+    private Blob tradeContents;
 
     @Column(name = "company_no", length = 20)
     private Long companyNo;
@@ -64,13 +55,5 @@ public class Trade {
 
     @Column(name = "ref_trade_no", length = 20)
     private Long refTradeNo;
-
-    @JsonFormat(shape = Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone = "asia/seoul")
-    @Column(name = "insert_timestamp", columnDefinition = "timestamp default current_timestamp", updatable = false, insertable = false, nullable = false)
-    private LocalDateTime insertTimeStamp;
-    
-    @JsonFormat(shape = Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone = "asia/seoul")
-    @Column(name = "updated_timestamp")
-    private LocalDateTime updatedTimeStamp;
 
 }

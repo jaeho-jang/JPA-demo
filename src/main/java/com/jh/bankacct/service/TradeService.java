@@ -1,33 +1,34 @@
 package com.jh.bankacct.service;
 
-import com.jh.bankacct.repository.dao.TradeRepository;
-import com.jh.bankacct.repository.entity.TradeTransferSum;
+import java.io.IOException;
+import java.sql.SQLException;
+
+import com.jh.bankacct.repository.dao.TradeTransferSumRepository;
+import com.jh.bankacct.repository.dto.TradeTransferSum;
+import com.jh.bankacct.repository.entity.TradeTransferSumEntity;
 
 import org.springframework.stereotype.Service;
 
 @Service
 public class TradeService {
 
-    private final TradeRepository tradeRepository;
+    private final TradeTransferSumRepository tradeRepository;
 
-    TradeService(TradeRepository tradeRepository) {
+    TradeService(TradeTransferSumRepository tradeRepository) {
         this.tradeRepository = tradeRepository;
     }
 
     public TradeTransferSum getTradeList() {
-        TradeTransferSum result = tradeRepository
-            .findById(100L)
-            .orElseGet(() -> new TradeTransferSum());
-        // Blob tradeContents = result.getTrade().getTradeContents();
-        // String s = null;
-        // try {
-        // byte[] allBytesInBlob = tradeContents.getBytes(48, (int)
-        // tradeContents.length());
-        // s = new String(allBytesInBlob);
-        // } catch (SQLException e) {
-        // e.printStackTrace();
-        // }
-        // System.out.println("======" + s + "======");
+        TradeTransferSum result = null;
+        try {
+			result = TradeTransferSum.of(
+			    tradeRepository
+			        .findById(100L)
+			        .orElseGet(() -> new TradeTransferSumEntity())
+            );
+		} catch (SQLException | IOException e) {
+            e.printStackTrace();
+		}
         return result;
     }
 

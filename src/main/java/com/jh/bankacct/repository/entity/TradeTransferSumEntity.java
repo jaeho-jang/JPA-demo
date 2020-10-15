@@ -1,7 +1,5 @@
 package com.jh.bankacct.repository.entity;
 
-import java.time.LocalDateTime;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -9,26 +7,17 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
-import com.fasterxml.jackson.annotation.JsonFormat.Shape;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 @Entity
 @Table(name = "t_trade_transfer_sum")
-@NoArgsConstructor
-@AllArgsConstructor
+@NoArgsConstructor @AllArgsConstructor
 @Getter
 @Builder
-@ToString
-@JsonAutoDetect(fieldVisibility = Visibility.ANY)
-public class TradeTransferSum {
+public class TradeTransferSumEntity extends BaseTimeEntity {
 
     @Id
     // @GeneratedValue
@@ -37,7 +26,7 @@ public class TradeTransferSum {
 
     @ManyToOne
     @JoinColumn(name = "trade_no", nullable = false)
-    private Trade trade;
+    private TradeEntity trade;
 
     @Column(name = "account_no", length = 20)
     private Long accountNo;
@@ -68,13 +57,5 @@ public class TradeTransferSum {
 
     @Column(name = "is_deleted", length = 1, nullable = false)
     private char isDeleted;
-
-    @JsonFormat(shape = Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone = "asia/seoul")
-    @Column(name = "insert_timestamp", columnDefinition = "timestamp default current_timestamp", updatable = false, insertable = false, nullable = false)
-    private LocalDateTime insertTimeStamp;
-
-    @JsonFormat(shape = Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone = "asia/seoul")
-    @Column(name = "updated_timestamp")
-    private LocalDateTime updatedTimeStamp;
 
 }
