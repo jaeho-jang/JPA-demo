@@ -25,37 +25,37 @@ public class TradeTransferSumEntity extends BaseTimeEntity {
     private Long tradeTransferSumId;
 
     @ManyToOne
-    @JoinColumn(name = "trade_no", nullable = false)
+    @JoinColumn(nullable = false)
     private TradeEntity trade;
 
-    @Column(name = "account_no", length = 20)
+    @Column(length = 20)
     private Long accountNo;
 
-    @Column(name = "req_dtime", columnDefinition = "char(14)", length = 14)
+    @Column(columnDefinition = "char(14)", length = 14)
     private char[] reqDtime;
 
-    @Column(name = "print_content", length = 20)
+    @Column(length = 20)
     private String printContent;
 
-    @Column(name = "total_tran_count", length = 11)
+    @Column(length = 11)
     private Integer totalTranCount;
 
-    @Column(name = "total_tran_amt", length = 20, nullable = false)
+    @Column(length = 20, nullable = false)
     private Long totalTranAmt;
 
-    @Column(name = "total_tran_fee", length = 20, nullable = false)
+    @Column(length = 20, nullable = false)
     private Long totalTranFee;
 
-    @Column(name = "transfer_todo_day", columnDefinition = "char(8)", length = 8)
+    @Column(columnDefinition = "char(8)", length = 8)
     private char[] transferTodoDay;
 
-    @Column(name = "transfer_process_day", columnDefinition = "char(8)", length = 8)
+    @Column(columnDefinition = "char(8)", length = 8)
     private char[] transferProcessDay;
 
-    @Column(name = "memo", length = 20)
+    @Column(length = 20)
     private String memo;
 
-    @Column(name = "is_deleted", length = 1, nullable = false)
+    @Column(length = 1, nullable = false)
     private char isDeleted;
 
 }
