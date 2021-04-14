@@ -14,7 +14,8 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "t_trade_transfer_sum")
-@NoArgsConstructor @AllArgsConstructor
+@NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Builder
 public class TradeTransferSumEntity extends BaseTimeEntity {
@@ -25,7 +26,7 @@ public class TradeTransferSumEntity extends BaseTimeEntity {
     private Long tradeTransferSumId;
 
     @ManyToOne
-    @JoinColumn(nullable = false)
+    @JoinColumn(name = "trade_no", nullable = false)
     private TradeEntity trade;
 
     @Column(length = 20)

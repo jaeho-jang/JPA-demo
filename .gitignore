@@ -39,7 +39,7 @@ application.*
 bin/
 
 ### test ###
-src/test/
+# src/test/
 
 ### markdown file ###
 *.md

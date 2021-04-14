@@ -15,7 +15,8 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "t_trade")
-@NoArgsConstructor @AllArgsConstructor
+@NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Builder
 public class TradeEntity extends BaseTimeEntity {

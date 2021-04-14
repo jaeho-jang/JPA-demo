@@ -9,14 +9,13 @@ import com.jh.bankacct.repository.entity.TradeTransferSumEntity;
 
 import org.springframework.stereotype.Service;
 
+import lombok.RequiredArgsConstructor;
+
 @Service
+@RequiredArgsConstructor
 public class TradeService {
 
     private final TradeTransferSumRepository tradeRepository;
-
-    TradeService(TradeTransferSumRepository tradeRepository) {
-        this.tradeRepository = tradeRepository;
-    }
 
     public TradeTransferSum getTradeList() {
         TradeTransferSum result = null;
