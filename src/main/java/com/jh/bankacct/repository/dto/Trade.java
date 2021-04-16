@@ -52,7 +52,7 @@ public class Trade {
     public TradeEntity toEntity() {
         return TradeEntity
                     .builder()
-                    .tradeId(tradeId)
+                    // .tradeId(tradeId)
                     .tradeTypeCode(tradeTypeCode)
                     .tradeName(tradeName)
                     .signId(signId)

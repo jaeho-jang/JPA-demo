@@ -36,20 +36,20 @@ public class TradeTransferSum {
     private char isDeleted;
 
     public static TradeTransferSum of(TradeTransferSumEntity entity) throws SQLException, IOException {
-        String reqDtime = entity.getReqDtime() != null ? String.valueOf(entity.getReqDtime()) : null;
-        String todoDay = entity.getTransferTodoDay() != null ? entity.getTransferTodoDay().toString() : null;
-        String processDay = entity.getTransferProcessDay() != null ? entity.getTransferProcessDay().toString() : null;
+        // String reqDtime = entity.getReqDtime() != null ? String.valueOf(entity.getReqDtime()) : null;
+        // String todoDay = entity.getTransferTodoDay() != null ? entity.getTransferTodoDay().toString() : null;
+        // String processDay = entity.getTransferProcessDay() != null ? entity.getTransferProcessDay().toString() : null;
         return TradeTransferSum
                     .builder()
                     .trade(Trade.of(entity.getTrade()))
                     .accountNo(entity.getAccountNo())
-                    .reqDtime(reqDtime)
+                    .reqDtime(entity.getReqDtime())
                     .printContent(entity.getPrintContent())
                     .totalTranCount(entity.getTotalTranCount())
                     .totalTranAmt(entity.getTotalTranAmt())
                     .totalTranFee(entity.getTotalTranFee())
-                    .transferTodoDay(todoDay)
-                    .transferProcessDay(processDay)
+                    .transferTodoDay(entity.getTransferTodoDay())
+                    .transferProcessDay(entity.getTransferProcessDay())
                     .memo(entity.getMemo())
                     .isDeleted(entity.getIsDeleted())
                     .build();
@@ -60,13 +60,13 @@ public class TradeTransferSum {
                     .builder()
                     .trade(trade.toEntity())
                     .accountNo(accountNo)
-                    .reqDtime(reqDtime.toCharArray())
+                    .reqDtime(reqDtime)
                     .printContent(printContent)
                     .totalTranCount(totalTranCount)
                     .totalTranAmt(totalTranAmt)
                     .totalTranFee(totalTranFee)
-                    .transferTodoDay(transferTodoDay.toCharArray())
-                    .transferProcessDay(transferProcessDay.toCharArray())
+                    .transferTodoDay(transferTodoDay)
+                    .transferProcessDay(transferProcessDay)
                     .memo(memo)
                     .isDeleted(isDeleted)
                     .build();

@@ -23,7 +23,7 @@ public class TradeService {
 			result = TradeTransferSum.of(
 			    tradeRepository
 			        .findById(100L)
-			        .orElseGet(() -> new TradeTransferSumEntity())
+			        .orElseGet(() -> TradeTransferSumEntity.builder().build())
             );
 		} catch (SQLException | IOException e) {
             e.printStackTrace();

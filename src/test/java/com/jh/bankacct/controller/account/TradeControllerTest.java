@@ -2,6 +2,7 @@ package com.jh.bankacct.controller.account;
 
 import com.jh.bankacct.controller.AbstractControllerTest;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -32,6 +33,11 @@ public class TradeControllerTest extends AbstractControllerTest {
     @Override
     protected Object controller() {
         return tradeController;
+    }
+
+    @BeforeEach
+    void preInit() {
+        
     }
 
     @Test

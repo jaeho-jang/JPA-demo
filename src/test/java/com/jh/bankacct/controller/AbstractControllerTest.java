@@ -21,7 +21,7 @@ public abstract class AbstractControllerTest {
 
     @BeforeEach
     private void setup() {
-        mockMvc = MockMvcBuilders
+        this.mockMvc = MockMvcBuilders
                 .standaloneSetup(controller())
                 .addFilters(new CharacterEncodingFilter(StandardCharsets.UTF_8.name(), true))
                 .alwaysDo(print())
